@@ -5,7 +5,7 @@ All development, art, audio, balance, multiplayer, and testing workflows are dri
 
 ## Quick Start for Developers
 
-> **Note for Windows + WSL users** – The *.sh scripts are fully supported under WSL.  The helper scripts now auto-detect the WSL environment and will invoke the Windows-installed Unity Editor located in `C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Unity.exe`.  Simply run the same commands shown below from your Ubuntu prompt.
+> **Note for Windows + WSL users** – The *.sh scripts are fully supported under WSL.  The helper scripts now auto-detect the WSL environment and will invoke the Windows-installed Unity Editor located in `C:\Program Files\Unity\Hub\Editor\6000.1.12f1\Editor\Unity.exe`.  Simply run the same commands shown below from your Ubuntu prompt.
 
 ### Setup & Build
 ```bash
@@ -26,7 +26,8 @@ dev-clean.bat
 ```
 
 ### Requirements
-- **Unity 6000.0.23f1** (Unity 6.1 LTS)
+- **Unity 6000.1.12f1** (Unity 6.1 LTS or newer 6.x build)
+  - *Make sure to add the “Linux Build Support (IL2CPP)” module in Unity Hub so the WSL build scripts work.*
 - **Unity Hub** (latest version)
 - **Git with Git LFS** (for asset management)
 - **Windows 10/11** (primary development platform)
@@ -80,3 +81,58 @@ Full design details: `.claude_docs/GAME_PRD.md`, `.claude_docs/GDD.md`, `.claude
 ---
 
 ## 2. Repository Layout
+
+```text
+Assets/                – Unity assets (art, audio, prefabs, scenes, scripts)
+  Art/                 – Concept art, textures, models
+  Data/                – ScriptableObjects, localisation CSVs
+  Prefabs/             – Prefab variants for heroes, UI, etc.
+  Scripts/             – Runtime, Editor, and test scripts (C#)
+      Core/            – Core engine-like utilities
+      Data/            – Data‐oriented ECS code
+      Heroes/          – Hero abilities and logic
+      UI/              – UI Toolkit components
+Build/                 – Generated builds (ignored by Git)
+Logs/                  – Editor & build logs (gitignored)
+Packages/              – Unity package manifest cache
+ProjectSettings/       – Unity project settings (versioned)
+TestResults/           – XML result files from Unity Test Runner
+Tools/                 – Helper scripts and CI configs (if any)
+```
+
+---
+
+## 3. Development Guides
+1. **Build automation** – See `dev-*.sh` (Linux/WSL) and `dev-*.bat` (Windows) scripts for one-click build, run, test, and clean.
+2. **Continuous Integration** – Sample GitHub Actions workflow coming soon to automate builds and tests on every pull request.
+3. **Coding standards** – C# code follows Microsoft + Unity conventions; run `dotnet format` before committing.
+
+## 4. Asset & Audio Pipelines
+* Art uses Blender & Substance Painter; exports land in `Assets/Art/`.
+* Audio is generated or recorded at 48 kHz WAV in `Assets/Audio/`.
+* Addressables handle asset streaming; see `AddressableAssetsData/`.
+
+## 5. Multiplayer & Networking
+Planned Netcode for Entities (Unity’s DOTS networking) with Steam Relay fallback.
+
+## 6. Balance, Campaign, & Testing
+Balance spreadsheets and campaign scripts live in `.claude_docs/` and are executed via in-Editor tools.
+
+## 7. Project Management & Contribution
+* Issues → GitHub Issues, labelled `bug`, `feature`, `tech-debt`.
+* Branching model → **main** (stable) / **dev** (integration) / feature branches.
+* Pull requests require passing CI and at least one code-review approval.
+
+## 8. Getting Started (Build / Play)
+```bash
+# Windows + WSL (Ubuntu)
+./dev-setup.sh   # one-time setup, pulls LFS assets
+./dev-run.sh     # build & run Linux player via WSL-g or X-server
+
+# pure Windows
+dev-setup.bat
+dev-run.bat
+```
+
+## 9. License
+MIT — see `LICENSE` for details. Commercial use permitted; attribution appreciated.

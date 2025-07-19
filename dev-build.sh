@@ -33,7 +33,7 @@ UNITY_EDITOR_PATH="/opt/Unity/Editor/Unity"
 
 # Detect WSL and attempt to use Windows Unity installation
 if grep -qi "microsoft" /proc/sys/kernel/osrelease 2>/dev/null; then
-    WINDOWS_UNITY_PATH="/mnt/c/Program Files/Unity/Hub/Editor/6000.0.23f1/Editor/Unity.exe"
+    WINDOWS_UNITY_PATH="/mnt/c/Program Files/Unity/Hub/Editor/6000.1.12f1/Editor/Unity.exe"
     if [ -f "$WINDOWS_UNITY_PATH" ]; then
         UNITY_EDITOR_PATH="$WINDOWS_UNITY_PATH"
     fi
