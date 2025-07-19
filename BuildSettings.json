@@ -1,0 +1,6 @@
+{
+  "buildTarget": "StandaloneLinux64",
+  "development": true,
+  "autoRunPlayer": true,
+  "buildPath": "./Build/FrostRealmChronicles"
+}

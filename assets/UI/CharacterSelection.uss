@@ -1,0 +1,373 @@
+/* Character Selection Screen Styles */
+/* Warcraft III: The Frozen Throne inspired design with modern Unity styling */
+
+/* Root Container */
+.full-screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+}
+
+/* Background */
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(15, 25, 45);
+    background-image: url('project://database/Assets/Art/UI/Backgrounds/CharacterSelectionBG.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Header Section */
+.header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px 20px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(150, 120, 60);
+}
+
+.title {
+    font-size: 48px;
+    color: rgb(220, 200, 140);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 5px;
+    -unity-font-style: bold;
+    text-align: middle-center;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: rgb(180, 180, 200);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    text-align: middle-center;
+}
+
+/* Main Content Area */
+.content {
+    flex: 1;
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Hero Selection Grid */
+.hero-grid {
+    flex: 1;
+    max-width: 400px;
+    flex-direction: column;
+    background-color: rgba(20, 30, 50, 0.8);
+    border-width: 2px;
+    border-color: rgb(100, 80, 40);
+    border-radius: 8px;
+    padding: 15px;
+    gap: 10px;
+}
+
+/* Hero Card Styles (for dynamically created elements) */
+.hero-card {
+    height: 80px;
+    flex-direction: row;
+    background-color: rgba(30, 40, 60, 0.9);
+    border-width: 2px;
+    border-color: rgb(80, 70, 50);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+    align-items: center;
+    transition-duration: 0.2s;
+    transition-property: background-color, border-color, scale;
+}
+
+.hero-card:hover {
+    background-color: rgba(50, 60, 80, 0.9);
+    border-color: rgb(120, 100, 60);
+    scale: 1.02;
+}
+
+.hero-card.selected {
+    background-color: rgba(80, 100, 120, 0.9);
+    border-color: rgb(150, 120, 60);
+    border-width: 3px;
+}
+
+.hero-card-portrait {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgb(100, 90, 70);
+    background-color: rgb(40, 40, 40);
+    margin-right: 10px;
+}
+
+.hero-card-info {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-card-name {
+    font-size: 16px;
+    color: rgb(220, 200, 140);
+    -unity-font-style: bold;
+    margin-bottom: 2px;
+}
+
+.hero-card-class {
+    font-size: 12px;
+    color: rgb(160, 160, 180);
+}
+
+/* Preview Panel */
+.preview-panel {
+    flex: 2;
+    background-color: rgba(15, 25, 40, 0.9);
+    border-width: 2px;
+    border-color: rgb(100, 80, 40);
+    border-radius: 8px;
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Portrait Container */
+.portrait-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 15px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(80, 70, 50);
+}
+
+.hero-portrait {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: rgb(150, 120, 60);
+    background-color: rgb(40, 40, 40);
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-name {
+    font-size: 32px;
+    color: rgb(220, 200, 140);
+    -unity-font-style: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Details Container */
+.details-container {
+    flex: 1;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Hero Info */
+.hero-info {
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.hero-class, .hero-faction, .hero-type {
+    font-size: 14px;
+    color: rgb(180, 160, 120);
+    -unity-font-style: bold;
+}
+
+/* Description */
+.description-scroll {
+    max-height: 100px;
+    background-color: rgba(20, 30, 50, 0.8);
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.hero-description {
+    font-size: 14px;
+    color: rgb(200, 200, 220);
+    white-space: normal;
+    -unity-text-align: upper-left;
+}
+
+/* Stats Container */
+.stats-container {
+    background-color: rgba(25, 35, 55, 0.8);
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.stats-title {
+    font-size: 16px;
+    color: rgb(220, 200, 140);
+    -unity-font-style: bold;
+    margin-bottom: 10px;
+}
+
+.primary-stats {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-row {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: rgb(180, 160, 120);
+}
+
+.stat-value {
+    font-size: 14px;
+    color: rgb(220, 200, 140);
+    -unity-font-style: bold;
+}
+
+/* Abilities Container */
+.abilities-container {
+    background-color: rgba(25, 35, 55, 0.8);
+    border-width: 1px;
+    border-color: rgb(80, 70, 50);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.abilities-title {
+    font-size: 16px;
+    color: rgb(220, 200, 140);
+    -unity-font-style: bold;
+    margin-bottom: 10px;
+}
+
+.abilities-grid {
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.ability-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgb(100, 90, 70);
+    background-color: rgb(40, 40, 40);
+}
+
+/* Footer */
+.footer {
+    flex-direction: row;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top-width: 2px;
+    border-top-color: rgb(150, 120, 60);
+    align-items: center;
+}
+
+.spacer {
+    flex: 1;
+}
+
+/* Buttons */
+.back-button, .start-button {
+    height: 50px;
+    padding: 0 30px;
+    border-radius: 5px;
+    border-width: 2px;
+    font-size: 16px;
+    -unity-font-style: bold;
+    transition-duration: 0.2s;
+    transition-property: background-color, border-color, scale;
+}
+
+.back-button {
+    background-color: rgba(80, 60, 40, 0.9);
+    border-color: rgb(120, 100, 60);
+    color: rgb(220, 200, 140);
+}
+
+.back-button:hover {
+    background-color: rgba(100, 80, 60, 0.9);
+    border-color: rgb(140, 120, 80);
+    scale: 1.05;
+}
+
+.start-button {
+    background-color: rgba(60, 80, 40, 0.9);
+    border-color: rgb(100, 120, 60);
+    color: rgb(220, 240, 200);
+}
+
+.start-button:hover {
+    background-color: rgba(80, 100, 60, 0.9);
+    border-color: rgb(120, 140, 80);
+    scale: 1.05;
+}
+
+.start-button:disabled {
+    background-color: rgba(40, 40, 40, 0.5);
+    border-color: rgb(60, 60, 60);
+    color: rgb(120, 120, 120);
+}
+
+/* Navigation Hints */
+.navigation-hints {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    align-items: center;
+    padding: 5px;
+}
+
+.hint-text {
+    font-size: 12px;
+    color: rgba(180, 180, 200, 0.8);
+    text-align: middle-center;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .content {
+        flex-direction: column;
+    }
+    
+    .hero-grid {
+        max-width: 100%;
+        flex-direction: row;
+        height: 200px;
+        overflow: hidden;
+    }
+    
+    .hero-card {
+        min-width: 200px;
+    }
+}
+
+/* Focus States for Keyboard Navigation */
+.hero-card:focus {
+    border-color: rgb(180, 150, 80);
+    border-width: 3px;
+    background-color: rgba(70, 90, 110, 0.9);
+}
+
+.back-button:focus, .start-button:focus {
+    border-color: rgb(180, 150, 80);
+    border-width: 3px;
+}

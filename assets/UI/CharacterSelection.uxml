@@ -1,0 +1,94 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CharacterSelection.uss?fileID=7433441132597879392&amp;guid=PLACEHOLDER&amp;type=3#CharacterSelection" />
+    
+    <!-- Main Container -->
+    <ui:VisualElement name="character-selection-container" class="full-screen">
+        
+        <!-- Background -->
+        <ui:VisualElement name="background" class="background" />
+        
+        <!-- Header -->
+        <ui:VisualElement name="header" class="header">
+            <ui:Label text="Choose Your Hero" name="title" class="title" />
+            <ui:Label text="Select a hero to begin your journey in the FrostRealm" name="subtitle" class="subtitle" />
+        </ui:VisualElement>
+        
+        <!-- Main Content Area -->
+        <ui:VisualElement name="content" class="content">
+            
+            <!-- Hero Selection Grid -->
+            <ui:VisualElement name="hero-grid" class="hero-grid">
+                <!-- Hero cards will be generated dynamically -->
+            </ui:VisualElement>
+            
+            <!-- Hero Preview Panel -->
+            <ui:VisualElement name="preview-panel" class="preview-panel">
+                
+                <!-- Hero Portrait -->
+                <ui:VisualElement name="portrait-container" class="portrait-container">
+                    <ui:VisualElement name="hero-portrait" class="hero-portrait" />
+                    <ui:Label text="Select a Hero" name="hero-name" class="hero-name" />
+                </ui:VisualElement>
+                
+                <!-- Hero Details -->
+                <ui:VisualElement name="details-container" class="details-container">
+                    
+                    <!-- Hero Info -->
+                    <ui:VisualElement name="hero-info" class="hero-info">
+                        <ui:Label text="Class: Unknown" name="hero-class" class="hero-class" />
+                        <ui:Label text="Faction: Unknown" name="hero-faction" class="hero-faction" />
+                        <ui:Label text="Type: Unknown" name="hero-type" class="hero-type" />
+                    </ui:VisualElement>
+                    
+                    <!-- Hero Description -->
+                    <ui:ScrollView name="description-scroll" class="description-scroll">
+                        <ui:Label text="Select a hero to see their description and abilities." name="hero-description" class="hero-description" />
+                    </ui:ScrollView>
+                    
+                    <!-- Hero Stats -->
+                    <ui:VisualElement name="stats-container" class="stats-container">
+                        <ui:Label text="Attributes" class="stats-title" />
+                        <ui:VisualElement name="primary-stats" class="primary-stats">
+                            <ui:VisualElement name="strength-stat" class="stat-row">
+                                <ui:Label text="Strength:" class="stat-label" />
+                                <ui:Label text="0" name="strength-value" class="stat-value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="agility-stat" class="stat-row">
+                                <ui:Label text="Agility:" class="stat-label" />
+                                <ui:Label text="0" name="agility-value" class="stat-value" />
+                            </ui:VisualElement>
+                            <ui:VisualElement name="intelligence-stat" class="stat-row">
+                                <ui:Label text="Intelligence:" class="stat-label" />
+                                <ui:Label text="0" name="intelligence-value" class="stat-value" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    
+                    <!-- Abilities Preview -->
+                    <ui:VisualElement name="abilities-container" class="abilities-container">
+                        <ui:Label text="Abilities" class="abilities-title" />
+                        <ui:VisualElement name="abilities-grid" class="abilities-grid">
+                            <!-- Ability icons will be generated dynamically -->
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    
+                </ui:VisualElement>
+                
+            </ui:VisualElement>
+            
+        </ui:VisualElement>
+        
+        <!-- Footer Controls -->
+        <ui:VisualElement name="footer" class="footer">
+            <ui:Button text="Back to Main Menu" name="back-button" class="back-button" />
+            <ui:VisualElement name="spacer" class="spacer" />
+            <ui:Button text="Start Game" name="start-button" class="start-button" />
+        </ui:VisualElement>
+        
+        <!-- Navigation Hints -->
+        <ui:VisualElement name="navigation-hints" class="navigation-hints">
+            <ui:Label text="Use WASD or Arrow Keys to navigate • Enter to select • Escape to go back" class="hint-text" />
+        </ui:VisualElement>
+        
+    </ui:VisualElement>
+</ui:UXML>

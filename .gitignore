@@ -1,0 +1,99 @@
+###############################################################################
+# FrostRealm Chronicles – Unity 6.1 LTS                                       #
+# Standard ignore rules for a cross-platform Unity / DOTS / Netcode project.  #
+###############################################################################
+
+#############
+# Unity Caches
+#############
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+LightmapSnapshot/
+UserSettings/
+
+# Local asset-store packages & auto-downloaded tools
+Assets/AssetStoreTools*
+
+#####################
+# Generated project files
+#####################
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+#############################
+# IDE settings (user-specific)
+#############################
+.vscode/
+.vs/
+.idea/
+*.sln.iml
+
+#########
+# OS junk
+#########
+.DS_Store
+.DS_Store?
+Icon?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+########################
+# Build artifacts / exports
+########################
+*.apk
+*.aab
+*.ipa
+*.exe
+*.app
+*.xcodeproj
+*.xcworkspace
+*.unitypackage
+
+# Addressables / server build output
+ServerData/
+AddressableAssetsData/*/AssetCatalog.json
+
+###################
+# Crash & debug logs
+###################
+*.log
+*.stacktrace
+*.dmp
+
+###################
+# Misc
+###################
+sysinfo.txt
+*.orig
+*.bak
+
+###################
+# AI / Assistant artifacts
+###################
+.claude/
+.claude_docs/
+
+###################
+# Unity generated test results
+###################
+TestResults/
+
+# End of file 
