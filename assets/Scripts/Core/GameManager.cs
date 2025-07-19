@@ -27,7 +27,7 @@ namespace FrostRealm.Core
             {
                 if (instance == null)
                 {
-                    instance = FindObjectOfType<GameManager>();
+                    instance = FindFirstObjectByType<GameManager>();
                     if (instance == null)
                     {
                         GameObject go = new GameObject("GameManager");
@@ -84,7 +84,7 @@ namespace FrostRealm.Core
         private void InitializeGame()
         {
             // Initialize input system
-            if (gameSettings != null)
+            if (gameSettings.targetFrameRate > 0)
             {
                 Application.targetFrameRate = gameSettings.targetFrameRate;
                 QualitySettings.vSyncCount = gameSettings.enableVSync ? 1 : 0;

@@ -35,7 +35,7 @@ namespace FrostRealm.Core
             {
                 if (instance == null)
                 {
-                    instance = FindObjectOfType<InputManager>();
+                    instance = FindFirstObjectByType<InputManager>();
                     if (instance == null)
                     {
                         GameObject go = new GameObject("InputManager");

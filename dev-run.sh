@@ -33,11 +33,20 @@ UNITY_HUB_PATH="/opt/Unity/Unity Hub/UnityHub.AppImage"
 UNITY_EDITOR_PATH="/opt/Unity/Editor/Unity"
 
 # Detect WSL and attempt to use Windows Unity installation
+UNITY_HUB_ROOTS=(
+    "/mnt/c/Program Files/Unity/Hub/Editor"
+    "/mnt/c/Program Files/Unity Hub/Editor"
+)
 if grep -qi "microsoft" /proc/sys/kernel/osrelease 2>/dev/null; then
-    WINDOWS_UNITY_PATH="/mnt/c/Program Files/Unity/Hub/Editor/6000.1.12f1/Editor/Unity.exe"
-    if [ -f "$WINDOWS_UNITY_PATH" ]; then
-        UNITY_EDITOR_PATH="$WINDOWS_UNITY_PATH"
-    fi
+    for root in "${UNITY_HUB_ROOTS[@]}"; do
+        if [ -d "$root" ]; then
+            CANDIDATE=$(find "$root" -maxdepth 3 -type f -name Unity.exe | sort -V | tail -n 1)
+            if [ -n "$CANDIDATE" ]; then
+                UNITY_EDITOR_PATH="$CANDIDATE"
+                break
+            fi
+        fi
+    done
 fi
 
 PROJECT_PATH=$(pwd)
@@ -79,6 +88,9 @@ if [ ! -f "$UNITY_EDITOR_PATH" ]; then
         exit 1
     fi
 fi
+
+# Convert project path for Windows Unity.exe when running under WSL
+echo "$UNITY_EDITOR_PATH" | grep -q "\.exe$" && PROJECT_PATH_WIN=$(wslpath -w "$PROJECT_PATH") && PROJECT_PATH="$PROJECT_PATH_WIN"
 
 # Get timestamp for logs
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")

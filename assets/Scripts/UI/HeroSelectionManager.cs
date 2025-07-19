@@ -150,7 +150,7 @@ namespace FrostRealm.UI
                     }
                 }
                 
-                if (!HasValidSelection)
+                if (!HasValidSelection && requireHeroSelection)
                 {
                     Debug.LogWarning("Cannot confirm selection: No valid hero selected!");
                     return;

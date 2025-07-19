@@ -96,4 +96,44 @@ sysinfo.txt
 ###################
 TestResults/
 
+###################
+# Unity Package Manager
+###################
+Packages/packages-lock.json
+
+###################
+# Unity Project Settings (auto-generated)
+###################
+ProjectSettings/AudioManager.asset
+ProjectSettings/ClusterInputManager.asset
+ProjectSettings/DynamicsManager.asset
+ProjectSettings/EditorBuildSettings.asset
+ProjectSettings/EditorSettings.asset
+ProjectSettings/GraphicsSettings.asset
+ProjectSettings/InputManager.asset
+ProjectSettings/MemorySettings.asset
+ProjectSettings/MultiplayerManager.asset
+ProjectSettings/NavMeshAreas.asset
+ProjectSettings/PackageManagerSettings.asset
+ProjectSettings/Physics2DSettings.asset
+ProjectSettings/PresetManager.asset
+ProjectSettings/ProjectSettings.asset
+ProjectSettings/QualitySettings.asset
+ProjectSettings/ShaderGraphSettings.asset
+ProjectSettings/TagManager.asset
+ProjectSettings/TimeManager.asset
+ProjectSettings/UnityConnectSettings.asset
+ProjectSettings/VFXManager.asset
+ProjectSettings/VersionControlSettings.asset
+
+###################
+# Unity Asset Meta files (auto-generated)
+###################
+*.meta
+
+###################
+# HDRP Default Resources
+###################
+HDRPDefaultResources/
+
 # End of file 
