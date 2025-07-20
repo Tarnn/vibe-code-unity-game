@@ -12,8 +12,9 @@ namespace FrostRealm.Editor
     public class BuildScript
     {
         private static readonly string[] SCENES = {
+            "Assets/Scenes/MainMenu/MainMenu.unity",
             "Assets/Scenes/CharacterSelection.unity",
-            // Add more scenes as they are created
+            "Assets/Scenes/Gameplay/Gameplay.unity",
         };
         
         private static readonly string BUILD_PATH = "Build/FrostRealmChronicles.exe";

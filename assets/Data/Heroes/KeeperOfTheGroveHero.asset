@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1f2b5a6c8e9d0f2a5b8c1e4d7a0b3c, type: 3}
+  m_Name: KeeperOfTheGroveHero
+  m_EditorClassIdentifier: 
+  heroName: Malfurion
+  description: Ancient Night Elf druid with command over nature forces. Can summon treants and heal allies with nature magic.
+  portrait: {fileID: 0}
+  modelPrefab: {fileID: 0}
+  heroClass: 16
+  faction: 3
+  heroType: 3
+  baseStats:
+    strength: 18
+    agility: 14
+    intelligence: 24
+    strengthGrowth: 1.8
+    agilityGrowth: 1.4
+    intelligenceGrowth: 3.2
+    baseHealth: 525
+    baseMana: 360
+    baseMovementSpeed: 270
+    baseAttackSpeed: 1.3
+    baseDamageMin: 22
+    baseDamageMax: 28
+    baseArmor: 1
+  abilities: []
+  voiceLines:
+    selectionLines: []
+    movementLines: []
+    attackLines: []
+    abilityLines: []

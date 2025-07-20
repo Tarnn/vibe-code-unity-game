@@ -85,7 +85,7 @@ echo
     -quit \
     -projectPath "$PROJECT_PATH" \
     -buildTarget StandaloneLinux64 \
-    -executeMethod BuildScript.BuildGame \
+    -executeMethod FrostRealm.Editor.BuildScript.BuildGame \
     -logFile "Logs/build_$TIMESTAMP.log"
 
 BUILD_RESULT=$?

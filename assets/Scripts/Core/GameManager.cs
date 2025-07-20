@@ -83,24 +83,47 @@ namespace FrostRealm.Core
         /// </summary>
         private void InitializeGame()
         {
-            // Initialize input system
-            if (gameSettings.targetFrameRate > 0)
+            try
             {
-                Application.targetFrameRate = gameSettings.targetFrameRate;
-                QualitySettings.vSyncCount = gameSettings.enableVSync ? 1 : 0;
-            }
-            
-            // Validate hero registry
-            if (HeroRegistry.Instance != null)
-            {
-                bool isValid = HeroRegistry.Instance.ValidateAllHeroes();
-                if (debugMode)
+                // Initialize input system
+                if (gameSettings.targetFrameRate > 0)
                 {
-                    Debug.Log($"Hero registry validation: {(isValid ? "PASSED" : "FAILED")}");
+                    Application.targetFrameRate = gameSettings.targetFrameRate;
+                    QualitySettings.vSyncCount = gameSettings.enableVSync ? 1 : 0;
                 }
+                
+                // Validate hero registry
+                if (HeroRegistry.Instance != null)
+                {
+                    bool isValid = HeroRegistry.Instance.ValidateAllHeroes();
+                    if (debugMode)
+                    {
+                        Debug.Log($"Hero registry validation: {(isValid ? "PASSED" : "FAILED")}");
+                    }
+                    
+                    if (!isValid)
+                    {
+                        Debug.LogWarning("Hero registry validation failed, but continuing with initialization");
+                    }
+                }
+                else
+                {
+                    Debug.LogError("HeroRegistry.Instance is null! Game may not function correctly.");
+                }
+                
+                // Initialize InputManager
+                if (InputManager.Instance == null)
+                {
+                    Debug.LogWarning("InputManager not found, creating instance...");
+                }
+                
+                Debug.Log("FrostRealm Chronicles initialized successfully!");
             }
-            
-            Debug.Log("FrostRealm Chronicles initialized successfully!");
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Failed to initialize game: {ex.Message}");
+                Debug.LogException(ex);
+            }
         }
         
         /// <summary>
@@ -147,9 +170,17 @@ namespace FrostRealm.Core
         /// </summary>
         public void LoadMainMenu()
         {
-            SetGameState(GameState.Loading);
-            SceneManager.LoadScene(mainMenuSceneName);
-            SetGameState(GameState.MainMenu);
+            try
+            {
+                SetGameState(GameState.Loading);
+                SceneManager.LoadScene(mainMenuSceneName);
+                SetGameState(GameState.MainMenu);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Failed to load main menu scene: {ex.Message}");
+                Debug.LogException(ex);
+            }
         }
         
         /// <summary>
@@ -157,9 +188,17 @@ namespace FrostRealm.Core
         /// </summary>
         public void LoadCharacterSelection()
         {
-            SetGameState(GameState.Loading);
-            SceneManager.LoadScene(characterSelectionSceneName);
-            SetGameState(GameState.CharacterSelection);
+            try
+            {
+                SetGameState(GameState.Loading);
+                SceneManager.LoadScene(characterSelectionSceneName);
+                SetGameState(GameState.CharacterSelection);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Failed to load character selection scene: {ex.Message}");
+                Debug.LogException(ex);
+            }
         }
         
         /// <summary>
@@ -167,15 +206,32 @@ namespace FrostRealm.Core
         /// </summary>
         public void LoadGameplay()
         {
-            if (selectedHero == null)
+            try
             {
-                Debug.LogWarning("No hero selected! Using default hero.");
-                selectedHero = HeroRegistry.Instance.DefaultHero;
+                if (selectedHero == null)
+                {
+                    Debug.LogWarning("No hero selected! Using default hero.");
+                    if (HeroRegistry.Instance != null)
+                    {
+                        selectedHero = HeroRegistry.Instance.DefaultHero;
+                    }
+                    
+                    if (selectedHero == null)
+                    {
+                        Debug.LogError("No default hero available! Cannot start gameplay.");
+                        return;
+                    }
+                }
+                
+                SetGameState(GameState.Loading);
+                SceneManager.LoadScene(gameplaySceneName);
+                SetGameState(GameState.InGame);
             }
-            
-            SetGameState(GameState.Loading);
-            SceneManager.LoadScene(gameplaySceneName);
-            SetGameState(GameState.InGame);
+            catch (System.Exception ex)
+            {
+                Debug.LogError($"Failed to load gameplay scene: {ex.Message}");
+                Debug.LogException(ex);
+            }
         }
         
         /// <summary>
