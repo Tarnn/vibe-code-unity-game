@@ -385,6 +385,13 @@ namespace FrostRealm.Core
         /// </summary>
         public void SetGoldIncomeRate(float ratePerSecond)
         {
+            if (float.IsNaN(ratePerSecond) || float.IsInfinity(ratePerSecond))
+            {
+                Debug.LogError($"Invalid gold income rate: {ratePerSecond}. Setting to 0.");
+                goldIncomeRate = 0f;
+                return;
+            }
+            
             goldIncomeRate = Mathf.Max(0, ratePerSecond);
             
             if (showDebugInfo)
@@ -398,6 +405,13 @@ namespace FrostRealm.Core
         /// </summary>
         public void SetLumberIncomeRate(float ratePerSecond)
         {
+            if (float.IsNaN(ratePerSecond) || float.IsInfinity(ratePerSecond))
+            {
+                Debug.LogError($"Invalid lumber income rate: {ratePerSecond}. Setting to 0.");
+                lumberIncomeRate = 0f;
+                return;
+            }
+            
             lumberIncomeRate = Mathf.Max(0, ratePerSecond);
             
             if (showDebugInfo)

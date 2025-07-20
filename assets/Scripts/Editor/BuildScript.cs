@@ -12,9 +12,9 @@ namespace FrostRealm.Editor
     public class BuildScript
     {
         private static readonly string[] SCENES = {
-            "Assets/Scenes/MainMenu/MainMenu.unity",
-            "Assets/Scenes/CharacterSelection.unity",
-            "Assets/Scenes/Gameplay/Gameplay.unity",
+            "assets/Scenes/MainMenu/MainMenu.unity",
+            "assets/Scenes/CharacterSelection.unity",
+            "assets/Scenes/Gameplay/Gameplay.unity",
         };
         
         private static readonly string BUILD_PATH = "Build/FrostRealmChronicles.exe";
@@ -76,7 +76,7 @@ namespace FrostRealm.Editor
         public static void QuickBuild()
         {
             // Use only the character selection scene for quick testing
-            string[] quickScenes = { "Assets/Scenes/CharacterSelection.unity" };
+            string[] quickScenes = { "assets/Scenes/CharacterSelection.unity" };
             
             BuildPlayerOptions buildOptions = new BuildPlayerOptions
             {

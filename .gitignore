@@ -1,10 +1,10 @@
 ###############################################################################
 # FrostRealm Chronicles – Unity 6.1 LTS                                       #
-# Standard ignore rules for a cross-platform Unity / DOTS / Netcode project.  #
+# Production-ready ignore rules for Unity project with HDRP, DOTS, Netcode    #
 ###############################################################################
 
 #############
-# Unity Caches
+# Unity Caches & Temporary Files
 #############
 [Ll]ibrary/
 [Tt]emp/
@@ -14,6 +14,8 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 LightmapSnapshot/
+
+# User-specific Unity settings (should not be shared)
 UserSettings/
 
 # Local asset-store packages & auto-downloaded tools
@@ -67,9 +69,15 @@ Desktop.ini
 *.xcworkspace
 *.unitypackage
 
-# Addressables / server build output
+# Custom build directories
+Build/
+Builds/
+WebGLBuild/
+
+# Addressables build output
 ServerData/
-AddressableAssetsData/*/AssetCatalog.json
+AddressableAssetsData/*/catalog*.json
+AddressableAssetsData/*/settings*.json
 
 ###################
 # Crash & debug logs
@@ -79,61 +87,176 @@ AddressableAssetsData/*/AssetCatalog.json
 *.dmp
 
 ###################
-# Misc
-###################
-sysinfo.txt
-*.orig
-*.bak
-
-###################
-# AI / Assistant artifacts
-###################
-.claude/
-.claude_docs/
-
-###################
-# Unity generated test results
+# Unity Test Results
 ###################
 TestResults/
 
 ###################
+# Misc temporary files
+###################
+sysinfo.txt
+*.orig
+*.bak
+*.swp
+*~
+
+###################
 # Unity Package Manager
 ###################
-Packages/packages-lock.json
+# NOTE: packages-lock.json should be tracked for dependency consistency
+# Packages/packages-lock.json
 
 ###################
-# Unity Project Settings (auto-generated)
+# Unity Project Settings - Production Ready Configuration
 ###################
-ProjectSettings/AudioManager.asset
-ProjectSettings/ClusterInputManager.asset
-ProjectSettings/DynamicsManager.asset
-ProjectSettings/EditorBuildSettings.asset
-ProjectSettings/EditorSettings.asset
-ProjectSettings/GraphicsSettings.asset
-ProjectSettings/InputManager.asset
+# Most ProjectSettings should be tracked for a production-ready game
+# Only exclude user-specific or auto-generated settings:
+
+# User-specific settings that vary per machine
+ProjectSettings/Packages/
+ProjectSettings/XRSettings.asset
+
+# Auto-generated settings that should not be tracked
 ProjectSettings/MemorySettings.asset
-ProjectSettings/MultiplayerManager.asset
-ProjectSettings/NavMeshAreas.asset
-ProjectSettings/PackageManagerSettings.asset
-ProjectSettings/Physics2DSettings.asset
-ProjectSettings/PresetManager.asset
-ProjectSettings/ProjectSettings.asset
-ProjectSettings/QualitySettings.asset
-ProjectSettings/ShaderGraphSettings.asset
-ProjectSettings/TagManager.asset
-ProjectSettings/TimeManager.asset
-ProjectSettings/UnityConnectSettings.asset
-ProjectSettings/VFXManager.asset
-ProjectSettings/VersionControlSettings.asset
+ProjectSettings/boot.config
 
 ###################
-# Unity Asset Meta files (auto-generated)
+# Unity Meta Files - IMPORTANT FOR PRODUCTION
 ###################
-*.meta
+# DO NOT ignore all .meta files - Unity requires them for proper asset management
+# Only ignore meta files for temporary or generated content:
+
+# Ignore meta files for temporary directories
+[Tt]emp.meta
+[Ll]ibrary.meta
+[Bb]uild.meta
+[Bb]uilds.meta
+[Ll]ogs.meta
+
+# Ignore meta files for user-specific content
+UserSettings.meta
 
 ###################
-# HDRP Default Resources
+# Unity-specific temporary files
 ###################
-HDRPDefaultResources/
+# Unity crash reports
+Unity_*.crash
 
-# End of file 
+# Unity activity logs
+UnityLockfile
+
+# Unity timeline cache
+Timeline/
+
+###################
+# HDRP & Render Pipeline
+###################
+# HDRP Default Resources should be tracked as they're project-specific
+# HDRPDefaultResources/ - REMOVED from ignore, should be tracked
+
+###################
+# DOTS & Netcode specific
+###################
+# Netcode generated files
+NetCode/
+
+# DOTS conversion logs
+ConversionLogs/
+
+###################
+# Platform-specific
+###################
+# Android
+[Aa]ndroid/
+android_backup_rules.xml
+
+# iOS  
+iOS/
+[Ii]OS/
+
+# WebGL
+WebGL/
+webgl_template/
+
+# Windows Store
+WSA/
+Windows/
+
+###################
+# Version Control
+###################
+# Git-specific
+.git/
+# NOTE: .gitattributes should be tracked
+
+# Perforce
+.p4config
+*.p4ignore
+
+###################
+# CI/CD & Development Tools
+###################
+# Test coverage reports
+coverage/
+coverage.xml
+
+# Profiler data
+ProfilerData/
+
+# Performance test results
+PerformanceTestResults/
+
+# Documentation build output
+Documentation~/GeneratedDocumentation/
+
+# Custom development scripts
+dev-*.sh
+dev-*.bat
+dev-*.ps1
+
+###################
+# Audio & Asset Processing
+###################
+# Temporary audio processing files
+*.tmp.wav
+*.tmp.ogg
+*.tmp.mp3
+
+# Texture processing temporaries
+*.tmp.png
+*.tmp.jpg
+*.tmp.tga
+
+###################
+# Localization
+###################
+# Translation working files
+*.xlf.bak
+*.pot.bak
+
+###################
+# Third-party integrations
+###################
+# Analytics
+unity-analytics/
+
+# Cloud Build
+CloudBuildSettings/
+
+# Unity Services
+UnityServices/
+
+###################
+# Custom FrostRealm specific
+###################
+# Development validation scripts (if you want to exclude from repo)
+# validate-project.sh
+
+# AI-generated content cache (if applicable)
+.ai-cache/
+
+# Local development database
+*.db
+*.sqlite
+
+# End of file

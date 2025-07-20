@@ -86,10 +86,15 @@ namespace FrostRealm.Core
             try
             {
                 // Initialize input system
-                if (gameSettings.targetFrameRate > 0)
+                if (gameSettings != null && gameSettings.targetFrameRate > 0)
                 {
                     Application.targetFrameRate = gameSettings.targetFrameRate;
                     QualitySettings.vSyncCount = gameSettings.enableVSync ? 1 : 0;
+                }
+                else if (gameSettings == null)
+                {
+                    Debug.LogWarning("GameSettings is null, using default settings");
+                    gameSettings = GameSettings.Default;
                 }
                 
                 // Validate hero registry

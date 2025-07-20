@@ -1,0 +1,103 @@
+# Unity Project .gitattributes
+# Ensures consistent line endings and proper diff handling across platforms
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Unity specific files
+*.cs text diff=csharp
+*.js text
+*.json text
+*.txt text
+*.md text
+*.xml text
+*.yml text
+*.yaml text
+
+# Unity asset files (binary)
+*.unity binary
+*.prefab binary
+*.asset binary
+*.meta binary
+*.mat binary
+*.anim binary
+*.controller binary
+*.overrideController binary
+*.physicMaterial binary
+*.physicsMaterial2D binary
+*.playable binary
+
+# Audio
+*.mp3 binary
+*.ogg binary
+*.wav binary
+*.aiff binary
+
+# Video
+*.mp4 binary
+*.mov binary
+*.avi binary
+*.webm binary
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.psd binary
+*.tga binary
+*.tiff binary
+*.iff binary
+*.pict binary
+*.dds binary
+*.xcf binary
+
+# 3D models
+*.fbx binary
+*.obj binary
+*.max binary
+*.blend binary
+*.dae binary
+*.mb binary
+*.ma binary
+
+# Executables
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+
+# Archives
+*.7z binary
+*.gz binary
+*.tar binary
+*.zip binary
+*.rar binary
+
+# Fonts
+*.ttf binary
+*.otf binary
+*.dfont binary
+
+# Unity packages
+*.unitypackage binary
+
+# Custom export attributes for Unity-specific workflow
+*.inputactions linguist-language=JSON
+*.asmdef linguist-language=JSON
+*.asmref linguist-language=JSON
+
+# Ensure shell scripts have proper line endings
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Ensure batch files have proper line endings
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Documentation
+*.md text diff=markdown
+README* text
+CHANGELOG* text
+LICENSE* text
+CONTRIBUTING* text
