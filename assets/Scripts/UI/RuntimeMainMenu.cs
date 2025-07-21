@@ -21,14 +21,22 @@ namespace FrostRealm.UI
         private GameObject menuContainer;
         private AudioSource audioSource;
         
+        void Awake()
+        {
+            Debug.Log("RuntimeMainMenu: Awake called - Creating menu immediately");
+            CreateCompleteMenu();
+        }
+        
         void Start()
         {
-            CreateCompleteMenu();
+            Debug.Log("RuntimeMainMenu: Start called - Animating menu entry");
             AnimateMenuEntry();
         }
         
         private void CreateCompleteMenu()
         {
+            Debug.Log("RuntimeMainMenu: Creating complete menu...");
+            
             // Create Canvas
             GameObject canvasGO = new GameObject("Main Menu Canvas");
             mainCanvas = canvasGO.AddComponent<Canvas>();

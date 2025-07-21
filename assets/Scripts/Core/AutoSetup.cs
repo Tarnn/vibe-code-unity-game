@@ -14,7 +14,7 @@ namespace FrostRealm.Core
     {
         [Header("Auto-Setup Configuration")]
         [SerializeField] private bool enableAutoSetup = true;
-        [SerializeField] private bool showDebugLogs = false;
+        [SerializeField] private bool showDebugLogs = true;
         
         private void Awake()
         {
@@ -26,6 +26,20 @@ namespace FrostRealm.Core
         private void PerformAutoSetup()
         {
             LogDebug("=== FrostRealm Chronicles Auto-Setup Starting ===");
+            
+            // Add debug logger first
+            if (FindFirstObjectByType<DebugLogger>() == null)
+            {
+                gameObject.AddComponent<DebugLogger>();
+                LogDebug("Added DebugLogger component");
+            }
+            
+            // Add SimpleTestMenu for guaranteed UI
+            if (FindFirstObjectByType<SimpleTestMenu>() == null)
+            {
+                gameObject.AddComponent<SimpleTestMenu>();
+                LogDebug("Added SimpleTestMenu component");
+            }
             
             // Configure application settings
             ConfigureApplicationSettings();
@@ -44,6 +58,9 @@ namespace FrostRealm.Core
             
             // Load essential resources
             LoadEssentialResources();
+            
+            // Start the main menu if we're in the first scene
+            StartMainMenuIfNeeded();
             
             LogDebug("=== FrostRealm Chronicles Auto-Setup Complete ===");
         }
@@ -192,6 +209,35 @@ namespace FrostRealm.Core
             Resources.LoadAll("UI");
             
             LogDebug("✅ Essential resources loaded");
+        }
+        
+        private void StartMainMenuIfNeeded()
+        {
+            LogDebug("Checking if main menu needs to be created...");
+            
+            // Check if we're in the MainMenu scene or first scene
+            string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            
+            if (currentScene == "MainMenu" || currentScene.Contains("SampleScene") || currentScene == "")
+            {
+                // Check if RuntimeMainMenu already exists
+                var existingMainMenu = FindFirstObjectByType<FrostRealm.UI.RuntimeMainMenu>();
+                if (existingMainMenu == null)
+                {
+                    LogDebug("Creating RuntimeMainMenu...");
+                    GameObject mainMenuGO = new GameObject("RuntimeMainMenu");
+                    mainMenuGO.AddComponent<FrostRealm.UI.RuntimeMainMenu>();
+                    LogDebug("✅ RuntimeMainMenu created and will initialize automatically");
+                }
+                else
+                {
+                    LogDebug("✅ RuntimeMainMenu already exists");
+                }
+            }
+            else
+            {
+                LogDebug($"Current scene '{currentScene}' doesn't need main menu");
+            }
         }
         
         private void LogDebug(string message)
