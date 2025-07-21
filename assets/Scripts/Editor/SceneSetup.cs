@@ -82,28 +82,12 @@ namespace FrostRealm.Editor
             // Ensure SceneLoader exists
             EnsureSceneLoader();
             
-            // Create UI Canvas if it doesn't exist
-            var canvas = Object.FindFirstObjectByType<Canvas>();
-            if (canvas == null)
+            // Add RuntimeMainMenu
+            var mainMenu = Object.FindFirstObjectByType<FrostRealm.UI.RuntimeMainMenu>();
+            if (mainMenu == null)
             {
-                var canvasGO = new GameObject("UI Canvas");
-                canvas = canvasGO.AddComponent<Canvas>();
-                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                
-                var canvasScaler = canvasGO.AddComponent<CanvasScaler>();
-                canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                canvasScaler.referenceResolution = new Vector2(1920, 1080);
-                
-                canvasGO.AddComponent<GraphicRaycaster>();
-            }
-            
-            // Create EventSystem if it doesn't exist
-            var eventSystem = Object.FindFirstObjectByType<UnityEngine.EventSystems.EventSystem>();
-            if (eventSystem == null)
-            {
-                var eventSystemGO = new GameObject("EventSystem");
-                eventSystemGO.AddComponent<UnityEngine.EventSystems.EventSystem>();
-                eventSystemGO.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+                var menuGO = new GameObject("Main Menu Manager");
+                menuGO.AddComponent<FrostRealm.UI.RuntimeMainMenu>();
             }
         }
         
@@ -167,6 +151,14 @@ namespace FrostRealm.Editor
             // Ensure GameManager exists
             EnsureGameManager();
             
+            // Generate terrain
+            var terrainGen = Object.FindFirstObjectByType<FrostRealm.Core.TerrainGenerator>();
+            if (terrainGen == null)
+            {
+                var terrainGO = new GameObject("Terrain Generator");
+                terrainGen = terrainGO.AddComponent<FrostRealm.Core.TerrainGenerator>();
+            }
+            
             // Setup RTS Camera
             var rtsCamera = Object.FindFirstObjectByType<FrostRealm.Core.SimpleRTSCamera>();
             if (rtsCamera == null)
@@ -175,8 +167,11 @@ namespace FrostRealm.Editor
                 if (cameraGO == null)
                 {
                     cameraGO = new GameObject("RTS Camera");
-                    cameraGO.AddComponent<Camera>();
-                    cameraGO.tag = "MainCamera";
+                    var cam = cameraGO.AddComponent<Camera>();
+                    cam.tag = "MainCamera";
+                    // Position camera for RTS view
+                    cameraGO.transform.position = new Vector3(64, 20, 40);
+                    cameraGO.transform.rotation = Quaternion.Euler(45, 0, 0);
                 }
                 cameraGO.AddComponent<FrostRealm.Core.SimpleRTSCamera>();
             }
@@ -213,6 +208,9 @@ namespace FrostRealm.Editor
                 im.AddComponent<InputManager>();
             }
             
+            // Create sample units for testing
+            CreateSampleUnits();
+            
             // Create UI Canvas for gameplay UI
             var canvas = Object.FindFirstObjectByType<Canvas>();
             if (canvas == null)
@@ -235,6 +233,33 @@ namespace FrostRealm.Editor
                 var eventSystemGO = new GameObject("EventSystem");
                 eventSystemGO.AddComponent<UnityEngine.EventSystems.EventSystem>();
                 eventSystemGO.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
+            }
+        }
+        
+        private static void CreateSampleUnits()
+        {
+            // Create some sample units for testing
+            for (int i = 0; i < 5; i++)
+            {
+                var unitGO = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                unitGO.name = $"Test Unit {i + 1}";
+                unitGO.transform.position = new Vector3(60 + i * 3, 1, 60);
+                
+                // Add NavMeshAgent
+                var agent = unitGO.AddComponent<UnityEngine.AI.NavMeshAgent>();
+                agent.speed = 3.5f;
+                
+                // Add unit controller
+                var unitController = unitGO.AddComponent<FrostRealm.Units.UnitController>();
+                
+                // Color units
+                var renderer = unitGO.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    Material mat = new Material(Shader.Find("HDRP/Lit"));
+                    mat.color = i % 2 == 0 ? Color.blue : Color.red;
+                    renderer.material = mat;
+                }
             }
         }
         

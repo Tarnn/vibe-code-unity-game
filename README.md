@@ -27,7 +27,7 @@ dev-clean.bat
 
 ### Requirements
 - **Unity 6000.1.12f1** (Unity 6.1 LTS or newer 6.x build)
-  - *Make sure to add the “Linux Build Support (IL2CPP)” module in Unity Hub so the WSL build scripts work.*
+  - *Make sure to add the "Linux Build Support (IL2CPP)" module in Unity Hub so the WSL build scripts work.*
 - **Unity Hub** (latest version)
 - **Git with Git LFS** (for asset management)
 - **Windows 10/11** (primary development platform)
@@ -43,17 +43,25 @@ dev-clean.bat
 - Input system (keyboard, mouse, gamepad)
 - Hero selection manager with animations
 - Build automation scripts
+- Core game management systems
+- Resource management framework
+- RTS camera controller
+- Unit selection system
+- Audio management system
+- Scene management framework
 
 ### 🔄 In Progress
-- Scene management framework
-- Hero asset integration
+- Hero asset integration (8 hero models available)
 - Audio system integration
+- Main gameplay scene development
+- Unit control system implementation
 
 ### ⏳ Planned
-- Main gameplay scene
-- Unit control system
-- Resource management
+- Main gameplay scene completion
+- Unit control system refinement
 - Multiplayer networking
+- Campaign system
+- Advanced AI systems
 
 ---
 
@@ -84,14 +92,15 @@ Full design details: `.claude_docs/GAME_PRD.md`, `.claude_docs/GDD.md`, `.claude
 
 ```text
 Assets/                – Unity assets (art, audio, prefabs, scenes, scripts)
-  Art/                 – Concept art, textures, models
-  Data/                – ScriptableObjects, localisation CSVs
+  Art/                 – Concept art, textures, models (8 hero models available)
+  Data/                – ScriptableObjects, hero data (8 heroes configured)
   Prefabs/             – Prefab variants for heroes, UI, etc.
   Scripts/             – Runtime, Editor, and test scripts (C#)
-      Core/            – Core engine-like utilities
+      Core/            – Core engine-like utilities (GameManager, InputManager, etc.)
       Data/            – Data‐oriented ECS code
       Heroes/          – Hero abilities and logic
       UI/              – UI Toolkit components
+  Scenes/              – MainMenu, CharacterSelection, Gameplay scenes
 Build/                 – Generated builds (ignored by Git)
 Logs/                  – Editor & build logs (gitignored)
 Packages/              – Unity package manifest cache
@@ -113,7 +122,7 @@ Tools/                 – Helper scripts and CI configs (if any)
 * Addressables handle asset streaming; see `AddressableAssetsData/`.
 
 ## 5. Multiplayer & Networking
-Planned Netcode for Entities (Unity’s DOTS networking) with Steam Relay fallback.
+Planned Netcode for Entities (Unity's DOTS networking) with Steam Relay fallback.
 
 ## 6. Balance, Campaign, & Testing
 Balance spreadsheets and campaign scripts live in `.claude_docs/` and are executed via in-Editor tools.

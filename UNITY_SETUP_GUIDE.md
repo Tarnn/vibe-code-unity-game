@@ -32,12 +32,12 @@ sudo snap install unity --classic
 3. Drag Unity Hub to Applications folder
 4. Launch Unity Hub from Applications
 
-## Step 2: Install Unity 6000.0.23f1
+## Step 2: Install Unity 6000.1.12f1
 
 1. **Open Unity Hub**
 2. **Go to "Installs" tab**
 3. **Click "Install Editor"**
-4. **Select Unity 6000.0.23f1** (Unity 6.1 LTS)
+4. **Select Unity 6000.1.12f1** (Unity 6.1 LTS)
 5. **Add these modules:**
    - Linux Build Support (IL2CPP)
    - Windows Build Support (IL2CPP) 
@@ -104,7 +104,7 @@ If the scripts can't find Unity, update the paths:
 
 ### Windows (edit dev-run.bat)
 ```batch
-set UNITY_PATH="C:\Program Files\Unity\Hub\Editor\2023.3.23f1\Editor\Unity.exe"
+set UNITY_PATH="C:\Program Files\Unity\Hub\Editor\6000.1.12f1\Editor\Unity.exe"
 ```
 
 ### Linux (edit dev-run.sh)
@@ -116,7 +116,7 @@ UNITY_EDITOR_PATH="/snap/unity/current/Editor/Unity"
 
 ### macOS (edit dev-run.sh)
 ```bash
-UNITY_EDITOR_PATH="/Applications/Unity/Hub/Editor/2023.3.23f1/Unity.app/Contents/MacOS/Unity"
+UNITY_EDITOR_PATH="/Applications/Unity/Hub/Editor/6000.1.12f1/Unity.app/Contents/MacOS/Unity"
 ```
 
 ## Troubleshooting
@@ -169,6 +169,23 @@ To test the character selection screen:
    - Enter/Space: Select hero
    - Escape: Go back
    - Mouse: Click to select
+
+## Current Features
+
+The project currently includes:
+
+### ✅ Working Features
+- **Character Selection System**: Fully functional hero selection with 8 available heroes
+- **Input System**: Keyboard, mouse, and gamepad support
+- **Core Systems**: GameManager, InputManager, ResourceManager, SelectionManager
+- **RTS Camera**: Full camera controls with zoom, pan, and rotation
+- **Build System**: Automated build scripts for Windows and Linux
+- **Hero Data**: 8 heroes configured with stats and abilities
+
+### 🔄 In Development
+- **Main Gameplay Scene**: Basic scene setup, needs unit implementation
+- **Audio System**: Framework in place, needs content integration
+- **Unit Control**: Selection system ready, movement/combat in progress
 
 ## Next Steps
 

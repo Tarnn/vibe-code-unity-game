@@ -144,19 +144,6 @@ namespace FrostRealm.Data
         }
     }
     
-    /// <summary>
-    /// Placeholder for ability data - will be expanded later.
-    /// </summary>
-    [System.Serializable]
-    public struct AbilityData
-    {
-        public string abilityName;
-        public string description;
-        public Sprite icon;
-        public float cooldown;
-        public int manaCost;
-        public int maxLevel;
-    }
     
     /// <summary>
     /// Hero voice lines for immersive audio experience.

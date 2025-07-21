@@ -59,8 +59,8 @@ if [ ! -f "$UNITY_EDITOR_PATH" ]; then
     COMMON_PATHS=(
         "/opt/unity/Editor/Unity"
         "/usr/bin/unity-editor"
-        "$HOME/Unity/Hub/Editor/2023.3.23f1/Editor/Unity"
-        "/Applications/Unity/Hub/Editor/2023.3.23f1/Unity.app/Contents/MacOS/Unity"
+        "$HOME/Unity/Hub/Editor/6000.1.12f1/Editor/Unity"
+        "/Applications/Unity/Hub/Editor/6000.1.12f1/Unity.app/Contents/MacOS/Unity"
     )
     
     for path in "${COMMON_PATHS[@]}"; do
@@ -74,11 +74,11 @@ if [ ! -f "$UNITY_EDITOR_PATH" ]; then
     if [ ! -f "$UNITY_EDITOR_PATH" ]; then
         print_error "Unity Editor not found!"
         echo
-        echo "Please install Unity 6000.0.23f1 and update UNITY_EDITOR_PATH in this script."
+        echo "Please install Unity 6000.1.12f1 and update UNITY_EDITOR_PATH in this script."
         echo
         echo "Installation options:"
         echo "1. Download Unity Hub from: https://unity3d.com/get-unity/download"
-        echo "2. Install Unity 6000.0.23f1 through Unity Hub"
+        echo "2. Install Unity 6000.1.12f1 through Unity Hub"
         echo "3. Or install via package manager if available"
         echo
         echo "Common Linux installation paths:"
@@ -110,7 +110,7 @@ echo
     -quit \
     -projectPath "$PROJECT_PATH" \
     -buildTarget StandaloneLinux64 \
-    -executeMethod BuildScript.BuildGame \
+    -executeMethod FrostRealm.Editor.BuildScript.BuildGame \
     -logFile "Logs/build_$TIMESTAMP.log" \
     -development
 
