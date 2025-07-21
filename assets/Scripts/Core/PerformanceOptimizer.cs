@@ -261,8 +261,8 @@ namespace FrostRealm.Core
         public string GetMemoryStats()
         {
             return $"Allocated: {(System.GC.GetTotalMemory(false) / 1024 / 1024):F1}MB | " +
-                   $"Reserved: {(UnityEngine.Profiling.Profiler.GetTotalReservedMemory(UnityEngine.Profiling.Profiler.Area.None) / 1024 / 1024):F1}MB | " +
-                   $"Used: {(UnityEngine.Profiling.Profiler.GetTotalAllocatedMemory(UnityEngine.Profiling.Profiler.Area.None) / 1024 / 1024):F1}MB";
+                   $"Reserved: {(UnityEngine.Profiling.Profiler.GetTotalReservedMemoryLong() / 1024 / 1024):F1}MB | " +
+                   $"Used: {(UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() / 1024 / 1024):F1}MB";
         }
         
         /// <summary>

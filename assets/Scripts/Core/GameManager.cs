@@ -86,14 +86,14 @@ namespace FrostRealm.Core
             try
             {
                 // Initialize input system
-                if (gameSettings != null && gameSettings.targetFrameRate > 0)
+                if (gameSettings.targetFrameRate > 0)
                 {
                     Application.targetFrameRate = gameSettings.targetFrameRate;
                     QualitySettings.vSyncCount = gameSettings.enableVSync ? 1 : 0;
                 }
-                else if (gameSettings == null)
+                else
                 {
-                    Debug.LogWarning("GameSettings is null, using default settings");
+                    Debug.LogWarning("GameSettings has invalid values, using default settings");
                     gameSettings = GameSettings.Default;
                 }
                 

@@ -66,7 +66,7 @@ namespace FrostRealm.Core
         {
             if (inputActions != null)
             {
-                inputActions.Enable();
+                inputActions.EnableAllActions();
             }
         }
         
@@ -74,7 +74,7 @@ namespace FrostRealm.Core
         {
             if (inputActions != null)
             {
-                inputActions.Disable();
+                inputActions.DisableAllActions();
             }
         }
         
@@ -94,17 +94,18 @@ namespace FrostRealm.Core
             inputActions = new FrostRealmInputActions();
             
             // Bind UI navigation actions
-            inputActions.UI.Navigate.performed += OnNavigatePerformed;
-            inputActions.UI.Submit.performed += OnSubmitPerformed;
-            inputActions.UI.Cancel.performed += OnCancelPerformed;
-            inputActions.UI.Point.performed += OnPointPerformed;
-            inputActions.UI.Click.performed += OnClickPerformed;
-            inputActions.UI.RightClick.performed += OnRightClickPerformed;
+            if (inputActions.NavigateAction != null)
+                inputActions.NavigateAction.performed += OnNavigatePerformed;
+            if (inputActions.SubmitAction != null)
+                inputActions.SubmitAction.performed += OnSubmitPerformed;
+            if (inputActions.CancelAction != null)
+                inputActions.CancelAction.performed += OnCancelPerformed;
+            if (inputActions.SelectAction != null)
+                inputActions.SelectAction.performed += OnClickPerformed;
+            if (inputActions.SecondarySelectAction != null)
+                inputActions.SecondarySelectAction.performed += OnRightClickPerformed;
             
-            // Bind game actions
-            inputActions.Player.Pause.performed += OnPausePerformed;
-            
-            inputActions.Enable();
+            inputActions.EnableAllActions();
             
             Debug.Log("Input system initialized successfully!");
         }
@@ -192,11 +193,11 @@ namespace FrostRealm.Core
         {
             if (enabled)
             {
-                inputActions?.Enable();
+                inputActions?.EnableAllActions();
             }
             else
             {
-                inputActions?.Disable();
+                inputActions?.DisableAllActions();
             }
         }
         
@@ -206,7 +207,14 @@ namespace FrostRealm.Core
         /// <param name="actionMapName">The name of the action map to activate</param>
         public void SwitchActionMap(string actionMapName)
         {
-            inputActions?.FindActionMap(actionMapName)?.Enable();
+            if (actionMapName == "UI")
+            {
+                inputActions?.EnableUI();
+            }
+            else if (actionMapName == "Player" || actionMapName == "Gameplay")
+            {
+                inputActions?.EnableGameplay();
+            }
         }
         
         /// <summary>
