@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8f4b5a2c3e1d0f8a6b9c4e7d2a5b1c, type: 3}
+  m_Script: {fileID: 11500000, guid: e37581381762e3a41b40096d9fa6cb3c, type: 3}
   m_Name: HeroRegistry
   m_EditorClassIdentifier: 
   availableHeroes:
