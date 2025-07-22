@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2376e21ac8fce458a5c6997167b86f, type: 3}
   m_Name: PaladinHero
   m_EditorClassIdentifier: 
-  heroName: Arthas
+  heroName: Uther
   description: A noble paladin warrior wielding the power of the Light. Specializes in tanking and holy magic.
   portrait: {fileID: 0}
   modelPrefab: {fileID: 0}

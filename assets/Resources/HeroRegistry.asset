@@ -15,10 +15,10 @@ MonoBehaviour:
   availableHeroes:
   - {fileID: 11400000, guid: 9b650a5fbbdd9b44b8b65ab89404ee2d, type: 2}
   - {fileID: 11400000, guid: 58b9de7c74eb0b846923c8ac94ab571e, type: 2}
-  - {fileID: 11400000, guid: 12345678901234567890abcd, type: 2}
-  - {fileID: 11400000, guid: 23456789012345678901bcde, type: 2}
-  - {fileID: 11400000, guid: 34567890123456789012cdef, type: 2}
-  - {fileID: 11400000, guid: 45678901234567890123def0, type: 2}
-  - {fileID: 11400000, guid: 56789012345678901234ef01, type: 2}
-  - {fileID: 11400000, guid: 67890123456789012345f012, type: 2}
+  - {fileID: 11400000, guid: 68f600c1d77c40e88cb1103919285404, type: 2}
+  - {fileID: 11400000, guid: 4f4f00976f3a49629106a7bdab5228d3, type: 2}
+  - {fileID: 11400000, guid: cf61b30f5e4b47cbacecd8669c716ade, type: 2}
+  - {fileID: 11400000, guid: 8701c1826f5548cbbd57eaff6adabb6e, type: 2}
+  - {fileID: 11400000, guid: 4c3f59c7aeea40db868d28d5686d48ed, type: 2}
+  - {fileID: 11400000, guid: 5361a58c69244037ae64ec5faf1c0d88, type: 2}
   defaultHero: {fileID: 11400000, guid: 9b650a5fbbdd9b44b8b65ab89404ee2d, type: 2}

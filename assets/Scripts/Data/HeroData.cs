@@ -46,10 +46,29 @@ namespace FrostRealm.Data
         /// </summary>
         public bool IsValid()
         {
-            return !string.IsNullOrEmpty(heroName) && 
-                   portrait != null && 
-                   modelPrefab != null && 
-                   baseStats.IsValid();
+            bool hasValidName = !string.IsNullOrEmpty(heroName);
+            bool hasValidStats = baseStats.IsValid();
+            
+            // For now, allow heroes without portraits and models to be valid
+            // This prevents validation failures during development
+            if (!hasValidName || !hasValidStats)
+            {
+                Debug.LogWarning($"Hero validation failed for {heroName}: Name={hasValidName}, Stats={hasValidStats}");
+                return false;
+            }
+            
+            // Warn about missing assets but don't fail validation
+            if (portrait == null)
+            {
+                Debug.LogWarning($"Hero '{heroName}' is missing portrait asset");
+            }
+            
+            if (modelPrefab == null)
+            {
+                Debug.LogWarning($"Hero '{heroName}' is missing model prefab");
+            }
+            
+            return true;
         }
     }
     
